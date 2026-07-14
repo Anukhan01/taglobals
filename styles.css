@@ -195,7 +195,7 @@ nav {
 }
 
 .section h2 {
-    font-size: clamp(30px, 4vw, 52px);
+    font-size: 48px;
     line-height: 1.1;
     margin: 8px 0
 }
