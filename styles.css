@@ -338,6 +338,12 @@ details p {
     border-radius: 14px;
     padding: 13px
 }
+section#areas .area-grid a {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 13px;
+}
 
 .area-grid {
     display: grid;
