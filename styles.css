@@ -85,6 +85,94 @@ nav {
     background: radial-gradient(circle at top right, rgba(217, 164, 65, .22), transparent 36%), linear-gradient(135deg, var(--navy), #071b34)
 }
 
+        .brand-marquee {
+            --bm-bg: #f7f8fa;
+            --bm-border: #e7e9ee;
+            --bm-heading: #12151c;
+            --bm-eyebrow: #b8860b;
+            --bm-logo-h: 34px;
+            --bm-gap: 56px;
+            --bm-speed: 34s;
+            background: var(--bm-bg);
+            border-top: 1px solid var(--bm-border);
+            border-bottom: 1px solid var(--bm-border);
+            padding: 44px 0 40px;
+        }
+
+        .brand-marquee .section-head {
+            text-align: center;
+            margin: 0 auto 26px;
+            padding: 0 20px;
+        }
+
+        .brand-marquee .eyebrow {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--bm-eyebrow);
+            margin: 0 0 8px;
+        }
+
+        .brand-marquee h2 {
+            font-size: clamp(20px, 2.6vw, 28px);
+            margin: 0;
+            color: var(--bm-heading);
+        }
+
+        .marquee-wrap {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+        }
+
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            animation: bm-scroll var(--bm-speed) linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-set {
+            display: flex;
+            align-items: center;
+            gap: var(--bm-gap);
+            padding-right: var(--bm-gap);
+            flex-shrink: 0;
+        }
+
+        .marquee-track img {
+            height: var(--bm-logo-h);
+            width: auto;
+            display: block;
+            filter: grayscale(100%);
+            opacity: .55;
+            transition: opacity .25s ease, filter .25s ease, transform .25s ease;
+        }
+
+        .marquee-track img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        @keyframes bm-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
 .eyebrow {
     color: var(--gold);
     text-transform: uppercase;
@@ -478,3 +566,23 @@ footer img {
         text-align: center
     }
 }
+
+@media (max-width:768px) {
+            .brand-marquee {
+                padding: 34px 0 30px;
+                --bm-logo-h: 26px;
+                --bm-gap: 34px;
+                --bm-speed: 22s;
+            }
+
+            .brand-marquee .section-head {
+                margin-bottom: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .marquee-track {
+                animation: none;
+                overflow-x: auto;
+            }
+        }
